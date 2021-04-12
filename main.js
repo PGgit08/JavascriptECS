@@ -15,15 +15,25 @@ function MainLoop(){
         // get entities components
         const components = curEntity.components;
 
+        
+        // check userControlled
+        if(components.userControlled){
+            components.position.x += xInputMov;
+            components.position.y += yInputMov;
+
+            // console.log(xInputMov);
+        };
+
         // get main components
-        const {x, y} = components.position;
-        const { color } = components.color;
+        var {x, y} = components.position;
+        var { color } = components.color;
     
         // system determining
         // if coordinates and color(basic appearance)
         if(x && y && color){
             // change fill color
             ctx.fillStyle = color;
+
             // check shape
             if(components.rectangleSize){
                 // get rectangle size
@@ -48,4 +58,7 @@ function MainLoop(){
 };
 
 // start loop and render to screen every 5 milliseconds(low framerate)
-const IntervalId = window.setInterval(MainLoop, 5);
+const IntervalId = window.setInterval(MainLoop, 0);
+// while (true){
+//     MainLoop();
+// }

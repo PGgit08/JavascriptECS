@@ -32,4 +32,12 @@ function CircleSize(circleSize={r:10}){
     };
 };
 
-// direction components can be here
+function UserControlled(lookAtMouse=false){
+    // make this controlled by wasd
+    return {
+        "name": "userControlled",
+        "lookAtMouse": lookAtMouse
+    };
+};
+
+// direction component(s) can be here
