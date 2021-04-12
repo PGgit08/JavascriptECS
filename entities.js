@@ -1,7 +1,5 @@
 // create entities object
-var entities = {
-
-};
+var entities = {};
 
 // to add entity
 const makeEntity = (id, entity_object) => {
@@ -12,3 +10,5 @@ const makeEntity = (id, entity_object) => {
 const removeEntity = (id) => {
     delete entities[id];
 };
+
+
