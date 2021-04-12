@@ -33,7 +33,7 @@ function renderRectangle(entities){
         };
         
         if(components.circleSize){
-            const r = components.circleSize;
+            const {r} = components.circleSize;
             ctx.fillStyle = color;
             ctx.beginPath();
             ctx.arc(x, y, r, 0, 2 * Math.PI)
