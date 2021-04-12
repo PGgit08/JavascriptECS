@@ -32,3 +32,14 @@ function renderToScreen(entities){
         );
     };
 };
+
+
+// circle rendering
+function circleRender(){
+    
+};
+
+// rectangle rendering
+function rectRender(){
+
+};

@@ -11,5 +11,15 @@ makeEntity(myEntity.id, myEntity);
 // output of entities
 console.log(entities);
 
+function MainLoop(){
+    for(var entityId in entities){
+        // get current entity
+        curEntity = entities[entityId];
+
+        // get entities components
+        const components = curEntity.components;
+    };
+};
+
 // start loop and render to screen every 5 milliseconds(low framerate)
-const IntervalId = window.setInterval(() => renderToScreen(entities), 5);
+const IntervalId = window.setInterval(MainLoop, 5);
