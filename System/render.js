@@ -1,6 +1,6 @@
 function ClearBackground(){
     // clear background
-    ctx.clearRect(0, 0, canvas.height, canvas.width);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 };
 
 // circle rendering

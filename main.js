@@ -1,11 +1,18 @@
 // output of entities
 console.log(entities);
 
+<<<<<<< HEAD
+myEntity.add_component(Position({x: 100, y:100}));
+myEntity.add_component(Color());
+myEntity.add_component(CircleSize({r: 100}));
+myEntity.add_component(Health({health: 10}))
+=======
 // main function which determines what systems
 // apply to which enteties
 function MainLoop(){
     // refresh background
     ClearBackground();
+>>>>>>> d188906ba951df2e4291fb8c94b9ee4c7026e031
 
     // go through entities
     for(var entityId in entities){
