@@ -15,12 +15,19 @@ function Color(){
     };
 };
 
-function Size(size){
+function RectangleSize(rectangleSize){
     // set size of entity
     return {
-        "name": "size",
-        "w": size.w,
-        "h": size.h
+        "name": "rectangleSize",
+        "w": rectangleSize.w,
+        "h": rectangleSize.h
+    };
+};
+
+function CircleSize(circleSize){
+    return {
+        "name": "circleSize",
+        "r": circleSize.r
     };
 };
 

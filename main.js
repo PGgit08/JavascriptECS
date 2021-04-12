@@ -3,7 +3,8 @@ var myEntity = new Entity("Player");
 
 myEntity.add_component(Position({x: 10, y:10}));
 myEntity.add_component(Color());
-myEntity.add_component(Size({w: 100, h:100}));
+myEntity.add_component(CircleSize({r: 100}));
+myEntity.add_component(Health({health: 10}))
 
 // save the entity
 makeEntity(myEntity.id, myEntity);
@@ -22,4 +23,4 @@ function MainLoop(){
 };
 
 // start loop and render to screen every 5 milliseconds(low framerate)
-const IntervalId = window.setInterval(MainLoop, 5);
+const IntervalId = window.setInterval(() => renderRectangle(entities), 5);
