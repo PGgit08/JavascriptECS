@@ -1,5 +1,13 @@
 // function for rendering entities to screen
 function renderToScreen(entities){
+    ctx.fillStyle = "white";
+    ctx.fillRect(
+        0,
+        0,
+        canvas.widht,
+        canvas.height
+    );
+
     for(var entityId in entities){
         // get current entity
         curEntity = entities[entityId];
