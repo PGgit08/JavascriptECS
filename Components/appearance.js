@@ -23,3 +23,5 @@ function Size(size){
         "h": size.h
     };
 };
+
+// direction components can be here
