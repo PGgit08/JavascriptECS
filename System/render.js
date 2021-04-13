@@ -1,6 +1,8 @@
 function ClearBackground(){
     // clear background
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.rect(0, 0, canvas.width, canvas.height);
 };
 
 // circle rendering
