@@ -8,21 +8,21 @@ window.addEventListener('keydown', (event) => {
 
     // switch statement for pressed key
     switch (pressed_key){
-        case 'w': {
+        case 'w': 
             yInputMov = -1;
-        };
+            break;
 
-        case 's': {
+        case 's': 
             yInputMov = 1;
-        };
+            break;
 
-        case 'a': {
+        case 'a': 
             xInputMov = -1;
-        };
+            break;
 
-        case 'd': {
+        case 'd': 
             xInputMov = 1;
-        };
+            break;
     };
 });
 
