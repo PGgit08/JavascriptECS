@@ -1,4 +1,5 @@
 // function for rendering entities to screen
+// la la la
 function renderRectangle(entities){
     ctx.fillStyle = "white";
     ctx.fillRect(
