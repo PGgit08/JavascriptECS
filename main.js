@@ -3,8 +3,10 @@ console.log(entities);
 
 function MainLoop(){
     ClearBackground();
+    // console.log(xInputMov);
 
     for(var entityId in entities){
+        // console.log(xInputMov, yInputMov);
         // get current entity
         curEntity = entities[entityId];
 
@@ -16,8 +18,6 @@ function MainLoop(){
         if(components.userControlled){
             components.position.x += xInputMov;
             components.position.y += yInputMov;
-
-            // console.log(xInputMov);
         };
 
         // get main components
