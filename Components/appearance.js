@@ -7,16 +7,16 @@ function Position(pos){
     };
 };
 
-function Color(color="black"){
+function Color(){
     // set color of entity(defaults to black)
     return {
         "name": "color",
-        "color": color
+        "color": "black"
     };
 };
 
-function RectangleSize(rectangleSize={w:10, h:10}){
-    // set size of rect entity(defaults to 10,10)
+function RectangleSize(rectangleSize){
+    // set size of entity
     return {
         "name": "rectangleSize",
         "w": rectangleSize.w,
@@ -24,8 +24,7 @@ function RectangleSize(rectangleSize={w:10, h:10}){
     };
 };
 
-function CircleSize(circleSize={r:10}){
-    // set size of circle entity(defaults to 10)
+function CircleSize(circleSize){
     return {
         "name": "circleSize",
         "r": circleSize.r
