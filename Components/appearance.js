@@ -1,9 +1,11 @@
-function Position(pos){
-    // set position of entity
+function Position(pos={x: pos.x, y: pos.y, angle:90}){
+    // set position of entity as well as angle
+    // angle defaults to 90
     return {
         "name": "position",
         "x": pos.x,
-        "y": pos.y
+        "y": pos.y,
+        "angle": pos.angle
     };
 };
 
@@ -39,4 +41,10 @@ function UserControlled(lookAtMouse=false){
     };
 };
 
-// direction component(s) can be here
+// NOTE: add image component
+function AddImage(path){
+    return {
+        "name": "image",
+        "path": path
+    };
+}; 

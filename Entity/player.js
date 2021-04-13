@@ -4,7 +4,8 @@ var Player = new Entity("Player");
 // add components to player
 Player.add_component(Position({x: 100, y:100}));
 Player.add_component(Color());
-Player.add_component(CircleSize({r: 10}));
+Player.add_component(RectangleSize({w:10, h:10}));
+// Player.add_component(CircleSize({r: 10}));
 Player.add_component(Health());
 Player.add_component(UserControlled());
 

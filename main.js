@@ -21,7 +21,7 @@ function MainLoop(){
         };
 
         // get main components
-        var {x, y} = components.position;
+        var {x, y, angle} = components.position;
         var { color } = components.color;
     
         // system determining
@@ -29,6 +29,7 @@ function MainLoop(){
         if(x && y && color){
             // change fill color
             ctx.fillStyle = color;
+            ctx.rotate(angle * Math.PI / 180);
 
             // check shape
             if(components.rectangleSize){
