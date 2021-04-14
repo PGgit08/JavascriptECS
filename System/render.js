@@ -13,7 +13,7 @@ function circleRender({r, x, y}){
 };
 
 // rectangle rendering
-function rectRender({w, h, x, y}){
+function rectRender({x, y, w, h}){
     ctx.rect(
         x,
         y,

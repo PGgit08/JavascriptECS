@@ -16,6 +16,12 @@ class Entity{
         this.bundles.push(name);
     };
 
+    add_bundles(names){
+        for(let name in names){
+            this.add_bundle(names[name]);
+        };
+    };
+
     remove_bundle(name){
         this.bundles.splice(this.bundles.indexOf(name), 1);
     };

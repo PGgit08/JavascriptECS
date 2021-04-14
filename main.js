@@ -3,12 +3,13 @@ console.log(entities);
 
 function MainLoop(){
     ClearBackground();
-    // console.log(xInputMov);
 
     for(var entityId in entities){
         // console.log(xInputMov, yInputMov);
         // get current entity
         curEntity = entities[entityId];
+
+        // console.log(curEntity);
 
         // get entities components
         const components = curEntity.components;
@@ -17,11 +18,52 @@ function MainLoop(){
         const bundles = curEntity.bundles;
 
         // bundle checking
-        if(APPEARANCE in bundles){
-            // draw here
+        if(bundles.includes(APPEARANCE)){
+            // if there is physics
+            if(bundles.includes(PHYSICS)){
+                // get speed
+                const { speed } = components.speed;
+
+                // gravity calculations
+                const { mass } = components.gravity;
+                components.gravity.gravity_speed += mass;
+                
+                const { gravity_speed } = components.gravity;
+                
+                // move based on gravity
+                components.position.y += gravity_speed;
+            };
+
+
+            const { x, y } = components.position;
+            const { color } = components.color;
+
+            ctx.fillStyle = color;
+
+            if(components.rectangleSize){
+                const {w, h} = components.rectangleSize;
+                rectRender({
+                    x,
+                    y,
+                    w,
+                    h
+                });
+            };
+
+            if(components.circleSize){
+                const { r } = components.circleSize;
+                circleRender({
+                    r,
+                    x,
+                    y
+                });
+            };
+
+            ctx.fill();
+
         };
     };
 };
 
-// start loop and render to screen every 5 milliseconds(low framerate)
-const IntervalId = window.setInterval(MainLoop, 1000/60);
+// start loop and render to screen 60 fps
+const IntervalId = window.setInterval(MainLoop, 20);
