@@ -1,13 +1,14 @@
 // create the entity
 var Player = new Entity("Player");
 
+// player components
+const player_components = Appearance(CircleSize({r: 10}), 10, 10, "green");
+
 // add components to player
-Player.add_component(Position({x: 100, y:100}));
-Player.add_component(Color("brown"));
-Player.add_component(RectangleSize({w:10, h:10}));
-// Player.add_component(CircleSize({r: 10}));
-Player.add_component(Health());
-Player.add_component(UserControlled());
+Player.add_components(player_components);
+
+// add bundles to player(still testing this out)
+Player.add_bundle(APPEARANCE);
 
 // save the entity
 makeEntity(Player.id, Player);
