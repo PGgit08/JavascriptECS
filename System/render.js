@@ -21,3 +21,14 @@ function rectRender({w, h, x, y}){
         h
     );
 };
+
+function drawImage({x, y, w, h, img}){
+    // isn't quite working yet
+    ctx.drawImage(
+        img,
+        x,
+        y,
+        w,
+        h
+    );
+};

@@ -29,7 +29,7 @@ function MainLoop(){
         if(x && y && color){
             // change fill color
             ctx.fillStyle = color;
-            ctx.rotate(angle * Math.PI / 180);
+            // ctx.rotate(angle * Math.PI / 180);
 
             // check shape
             if(components.rectangleSize){
@@ -55,4 +55,4 @@ function MainLoop(){
 };
 
 // start loop and render to screen every 5 milliseconds(low framerate)
-const IntervalId = window.setInterval(MainLoop, 0);
+const IntervalId = window.setInterval(MainLoop, 1000/60);

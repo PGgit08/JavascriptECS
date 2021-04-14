@@ -9,11 +9,11 @@ function Position(pos={x: pos.x, y: pos.y, angle:90}){
     };
 };
 
-function Color(){
+function Color(color="black"){
     // set color of entity(defaults to black)
     return {
         "name": "color",
-        "color": "black"
+        "color": color
     };
 };
 
@@ -43,8 +43,8 @@ function UserControlled(lookAtMouse=false){
 
 // NOTE: add image component
 function AddImage(path){
-    return {
-        "name": "image",
-        "path": path
-    };
+    const image = new Image();
+    image.src = path;
+
+    // isn't quite working, check out later
 }; 
