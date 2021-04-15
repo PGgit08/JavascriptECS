@@ -3,55 +3,73 @@ console.log(entities);
 
 function MainLoop(){
     ClearBackground();
-    // console.log(xInputMov);
 
     for(var entityId in entities){
         // console.log(xInputMov, yInputMov);
         // get current entity
         curEntity = entities[entityId];
 
+        // console.log(curEntity);
+
         // get entities components
         const components = curEntity.components;
-
         
-        // check userControlled
-        if(components.userControlled){
-            components.position.x += xInputMov;
-            components.position.y += yInputMov;
-        };
+        // get bundles of entity
+        const bundles = curEntity.bundles;
 
-        // get main components
-        var {x, y} = components.position;
-        var { color } = components.color;
-    
-        // system determining
-        // if coordinates and color(basic appearance)
-        if(x && y && color){
-            // change fill color
+        // bundle checking
+        if(bundles.includes(APPEARANCE)){
+            // get x and y and color
+            const { x, y } = components.position;
+            const { color } = components.color;
+
+            // if there is physics
+            if(bundles.includes(PHYSICS)){
+                // get speed
+                const { speed } = components.speed;
+
+                // gravity calculations
+                const { mass } = components.gravity;
+                components.gravity.gravity_speed += mass;
+                
+                const { gravity_speed } = components.gravity;
+                
+                // move based on gravity
+                components.position.y += gravity_speed;
+
+                // check if entity is user controlled
+                if (components.userControlled){
+                    components.position.x += xInputMov * speed;
+                    components.position.y += yInputMov * speed;
+                };
+            };
+
             ctx.fillStyle = color;
 
-            // check shape
             if(components.rectangleSize){
-                // get rectangle size
                 const {w, h} = components.rectangleSize;
-
-                // draw rectangle
-                rectRender({w, h, x, y});
+                rectRender({
+                    x,
+                    y,
+                    w,
+                    h
+                });
             };
 
             if(components.circleSize){
-                // get radius
-                const {r} = components.circleSize;
-
-                // draw circle
-                circleRender({r, x, y});
+                const { r } = components.circleSize;
+                circleRender({
+                    r,
+                    x,
+                    y
+                });
             };
 
-            // after entity creation fill it
             ctx.fill();
+
         };
     };
 };
 
-// start loop and render to screen every 5 milliseconds(low framerate)
-const IntervalId = window.setInterval(MainLoop, 0);
+// start loop and render to screen 60 fps
+const IntervalId = window.setInterval(MainLoop, 20);
