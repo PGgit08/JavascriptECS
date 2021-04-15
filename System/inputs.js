@@ -23,6 +23,14 @@ window.addEventListener('keydown', (event) => {
         case 'd': 
             xInputMov = 1;
             break;
+
+        case 'escape':
+            // kill the game, using gloval interval id
+            window.clearInterval(window.IntervalId);
+
+            // alerts + console log
+            alert("KILLED GAME!");
+            console.log("KILLED GAME");
     };
 });
 

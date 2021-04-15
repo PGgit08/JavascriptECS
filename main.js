@@ -7,9 +7,7 @@ function MainLoop(){
     for(var entityId in entities){
         // console.log(xInputMov, yInputMov);
         // get current entity
-        curEntity = entities[entityId];
-
-        // console.log(curEntity);
+        var curEntity = entities[entityId];
 
         // get entities components
         const components = curEntity.components;
@@ -44,11 +42,15 @@ function MainLoop(){
             const { x, y } = components.position;
             const { color } = components.color;
 
+            // stroke items
             // console.log(color);
-
+            ctx.strokeStyle = color;
             ctx.fillStyle = color;
 
+            // console.log(ctx.fillStyle);
+
             if(components.rectangleSize){
+                // console.log(color);
                 const {w, h} = components.rectangleSize;
                 rectRender({
                     x,
@@ -59,6 +61,7 @@ function MainLoop(){
             };
 
             if(components.circleSize){
+                // console.log(color);
                 const { r } = components.circleSize;
                 circleRender({
                     r,
@@ -67,11 +70,14 @@ function MainLoop(){
                 });
             };
 
+            ctx.stroke();
             ctx.fill();
+            // console.log(ctx.strokeStyle);
 
         };
     };
 };
 
-// start loop and render to screen 60 fps
-const IntervalId = window.setInterval(MainLoop, 20);
+// start loop and render to screen 60 fps(create id as global variable)
+window.IntervalId = window.setInterval(MainLoop, 20);
+

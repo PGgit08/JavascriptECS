@@ -5,7 +5,7 @@ var Enemy = new Entity("Enemy");
 var enemy_components = [
     ...Appearance(RectangleSize({w: 100, h:100}), 200, 200, "black"),
     ...Physics({speed:5, mass: 0}),
-    // UserControlled()
+    UserControlled()
 ];
 
 var enemy_bundles = [
