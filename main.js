@@ -19,10 +19,6 @@ function MainLoop(){
 
         // bundle checking
         if(bundles.includes(APPEARANCE)){
-            // get x and y and color
-            const { x, y } = components.position;
-            const { color } = components.color;
-
             // if there is physics
             if(bundles.includes(PHYSICS)){
                 // get speed
@@ -43,6 +39,12 @@ function MainLoop(){
                     components.position.y += yInputMov * speed;
                 };
             };
+
+            // get x and y and color
+            const { x, y } = components.position;
+            const { color } = components.color;
+
+            // console.log(color);
 
             ctx.fillStyle = color;
 
