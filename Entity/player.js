@@ -4,7 +4,8 @@ var Player = new Entity("Player");
 // player components + bundles
 var player_components = [
     ...Appearance(CircleSize({r: 10}), 100, 100, "green"),
-    ...Physics()
+    ...Physics({speed:10, mass: 0}),
+    UserControlled()
 ];
 
 var player_bundles = [

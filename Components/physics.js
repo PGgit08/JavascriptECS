@@ -13,6 +13,6 @@ function Gravity(mass){
     };
 };
 
-function Physics(speed=1, mass=0.02){
-    return [Gravity(mass), Speed(speed)];
+function Physics(physics={speed:1, mass:0.02}){
+    return [Gravity(physics.mass), Speed(physics.speed)];
 };

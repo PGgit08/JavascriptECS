@@ -19,6 +19,10 @@ function MainLoop(){
 
         // bundle checking
         if(bundles.includes(APPEARANCE)){
+            // get x and y and color
+            const { x, y } = components.position;
+            const { color } = components.color;
+
             // if there is physics
             if(bundles.includes(PHYSICS)){
                 // get speed
@@ -32,11 +36,13 @@ function MainLoop(){
                 
                 // move based on gravity
                 components.position.y += gravity_speed;
+
+                // check if entity is user controlled
+                if (components.userControlled){
+                    components.position.x += xInputMov * speed;
+                    components.position.y += yInputMov * speed;
+                };
             };
-
-
-            const { x, y } = components.position;
-            const { color } = components.color;
 
             ctx.fillStyle = color;
 
