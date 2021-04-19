@@ -1,12 +1,12 @@
-function Enemy(){
+function Enemy(x, y, id){
     // make the enemy entity
-    var Enemy = new Entity("Enemy");
+    var Enemy = new Entity(id);
 
     // enemy components + bundles
     var enemy_components = [
-    ...Appearance({shape:RectangleSize({w: 100, h:100}), x:200, y:200}),
+    ...Appearance({shape:RectangleSize({w: 100, h:100}), x:x, y:y}),
     ...Physics({speed:5, mass: 0}),
-    UserControlled()
+    // UserControlled()
     ];
 
     var enemy_bundles = [

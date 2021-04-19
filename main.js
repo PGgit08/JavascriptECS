@@ -14,6 +14,7 @@ function MainLoop(){
         
         // get bundles of entity
         const bundles = curEntity.bundles;
+        // console.log(curEntity);
 
         // bundle checking
         if(bundles.includes(APPEARANCE)){
