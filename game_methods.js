@@ -7,5 +7,3 @@ function rand_coords(w, h){
 
     return {x: ranX, y:ranY};
 };
-
-// console.log(rand_coords(1, 1));

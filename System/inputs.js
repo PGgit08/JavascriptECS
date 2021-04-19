@@ -1,6 +1,8 @@
 var xInputMov = 0;
 var yInputMov = 0;
 
+var angleMov = 0;
+
 // look for keydown on the screen
 window.addEventListener('keydown', (event) => {
     // convert key to lowercase
@@ -22,6 +24,14 @@ window.addEventListener('keydown', (event) => {
 
         case 'd': 
             xInputMov = 1;
+            break;
+
+        case 'e':
+            angleMov = 1;
+            break;
+
+        case 'q':
+            angleMov = -1;
             break;
 
         case 'escape':

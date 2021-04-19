@@ -34,11 +34,13 @@ function CircleSize(circleSize){
     };
 };
 
-function UserControlled(lookAtMouse){
+function UserControlled(rotation=false, move=true){
+    console.log(rotation);
     // make this controlled by wasd
     return {
         "name": "userControlled",
-        "lookAtMouse": lookAtMouse
+        "rotation": o.rotation,
+        "move": o.move
     };
 };
 

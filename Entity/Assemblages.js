@@ -4,9 +4,9 @@ function Enemy(x, y, id){
 
     // enemy components + bundles
     var enemy_components = [
-    ...Appearance({shape:RectangleSize({w: 100, h:100}), x:x, y:y}),
+    ...Appearance({shape:RectangleSize({w: 100, h:100}), x:x, y:y, color:"black", stroke:"blue"}),
     ...Physics({speed:5, mass: 0}),
-    // UserControlled()
+    UserControlled({move:false, rotation:true})
     ];
 
     var enemy_bundles = [

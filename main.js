@@ -34,8 +34,12 @@ function MainLoop(){
 
                 // check if entity is user controlled
                 if (components.userControlled){
-                    components.position.x += xInputMov * speed;
-                    components.position.y += yInputMov * speed;
+                    const {move, rotation} = components.userControlled;
+
+                    if(move){
+                        components.position.x += xInputMov * speed;
+                        components.position.y += yInputMov * speed;
+                    };
                 };
             };
 
@@ -49,17 +53,20 @@ function MainLoop(){
             if(components.rectangleSize){
                 // console.log(color);
                 const {w, h} = components.rectangleSize;
+                // ctx.rotate(10);
                 rectRender({
                     x,
                     y,
                     w,
                     h
                 });
+                ctx.strokeRect(x, y, w, h);
             };
 
             if(components.circleSize){
                 // console.log(color);
                 const { r } = components.circleSize;
+                // ctx.rotate(10);
                 circleRender({
                     r,
                     x,
@@ -74,5 +81,5 @@ function MainLoop(){
 };
 
 // start loop and render to screen 60 fps(create id as global variable)
-window.IntervalId = window.setInterval(MainLoop, 20);
+window.IntervalId = window.setInterval(MainLoop, 1000/60);
 
