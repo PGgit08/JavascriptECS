@@ -12,7 +12,7 @@ function circleRender({r, x, y}){
 
 // rectangle rendering
 function rectRender({x, y, w, h}){
-    ctx.rect(
+    ctx.fillRect(
         x,
         y,
         w,

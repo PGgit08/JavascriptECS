@@ -40,14 +40,10 @@ function MainLoop(){
 
             // get x and y and color
             const { x, y } = components.position;
-            const { color } = components.color;
+            const { color, stroke } = components.color;
 
-            // stroke items
-            // console.log(color);
-            ctx.strokeStyle = color;
+            ctx.strokeStyle = stroke;
             ctx.fillStyle = color;
-
-            // console.log(ctx.fillStyle);
 
             if(components.rectangleSize){
                 // console.log(color);
@@ -72,8 +68,6 @@ function MainLoop(){
 
             ctx.stroke();
             ctx.fill();
-            // console.log(ctx.strokeStyle);
-
         };
     };
 };
