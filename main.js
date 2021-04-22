@@ -40,13 +40,20 @@ function MainLoop(){
                         components.position.x += xInputMov * speed;
                         components.position.y += yInputMov * speed;
                     };
+
+                    if(rotation){
+                        // rotation for object
+                        components.position.angle += angleMov;
+                        // console.log(components.position.angle);
+                    };
                 };
             };
 
             // get x and y and color
-            const { x, y } = components.position;
+            const { x, y, angle } = components.position;
             const { color, stroke } = components.color;
 
+            ctx.lineWidth = 2;
             ctx.strokeStyle = stroke;
             ctx.fillStyle = color;
 

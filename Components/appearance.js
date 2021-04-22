@@ -35,12 +35,11 @@ function CircleSize(circleSize){
 };
 
 function UserControlled(rotation=false, move=true){
-    console.log(rotation);
     // make this controlled by wasd
     return {
         "name": "userControlled",
-        "rotation": o.rotation,
-        "move": o.move
+        "rotation": rotation,
+        "move": move
     };
 };
 

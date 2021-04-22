@@ -44,4 +44,4 @@ window.addEventListener('keydown', (event) => {
     };
 });
 
-window.addEventListener('keyup', () => {xInputMov=0;yInputMov=0;});
+window.addEventListener('keyup', () => {xInputMov=0;yInputMov=0;angleMov=0;});

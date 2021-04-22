@@ -7,3 +7,17 @@ function rand_coords(w, h){
 
     return {x: ranX, y:ranY};
 };
+
+function rotate_entity(components, angle){
+    // save canvas's current items, and state
+    ctx.save();
+
+    // move canvas to center of entity
+    ctx.translate(components.x, components.y);
+
+    // rotate canvas
+    ctx.rotate(angle);
+
+    // restore canvas
+    ctx.restore();
+};
