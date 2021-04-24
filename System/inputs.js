@@ -1,3 +1,7 @@
+/* 
+Input system that changes global movement variables
+*/
+
 var xInputMov = 0;
 var yInputMov = 0;
 

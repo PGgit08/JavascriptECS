@@ -6,7 +6,7 @@ function Enemy(x, y, id){
     var enemy_components = [
     ...Appearance({shape:RectangleSize({w: 100, h:100}), x:x, y:y, color:"black", stroke:"blue"}),
     ...Physics({speed:5, mass: 0}),
-    UserControlled(rotation=true, move=false)
+    UserControlled(rotation=false, move=false)
     ];
 
     var enemy_bundles = [

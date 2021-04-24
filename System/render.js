@@ -1,3 +1,7 @@
+/* 
+Rendering system that can render entities of different shapes and sizes
+*/
+
 function ClearBackground(){
     // clear background
     ctx.beginPath();
