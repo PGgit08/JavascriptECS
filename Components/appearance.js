@@ -9,11 +9,12 @@ function Position(pos){
     };
 };
 
-function Color(color){
+function Color(color, stroke){
     // set color of entity(defaults to black)
     return {
         "name": "color",
-        "color": color
+        "color": color,
+        "stroke": stroke
     };
 };
 
@@ -33,11 +34,12 @@ function CircleSize(circleSize){
     };
 };
 
-function UserControlled(lookAtMouse){
+function UserControlled(rotation=false, move=true){
     // make this controlled by wasd
     return {
         "name": "userControlled",
-        "lookAtMouse": lookAtMouse
+        "rotation": rotation,
+        "move": move
     };
 };
 
@@ -50,9 +52,9 @@ function AddImage(path){
 }; 
 
 // a "template" that holds some of these items together
-function Appearance(shape, x, y, color="black", angle=90){
+function Appearance({shape, color="black", stroke="black", angle=90, x, y}){
     const shape_component = shape;
-    const color_component = Color(color);
+    const color_component = Color(color, stroke);
     const position_component = Position({x:x, y:y, angle:angle});
 
     return [shape_component, color_component, position_component];

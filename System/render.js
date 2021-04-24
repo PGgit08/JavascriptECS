@@ -1,7 +1,10 @@
-// fix
+/* 
+Rendering system that can render entities of different shapes and sizes
+*/
+
 function ClearBackground(){
     // clear background
-    ctx.fillStyle = "white";
+    ctx.beginPath();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 };
 
@@ -9,12 +12,11 @@ function ClearBackground(){
 function circleRender({r, x, y}){
     ctx.beginPath();
     ctx.arc(x, y, r, 0, 2 * Math.PI);
-    ctx.stroke();
 };
 
 // rectangle rendering
 function rectRender({x, y, w, h}){
-    ctx.rect(
+    ctx.fillRect(
         x,
         y,
         w,

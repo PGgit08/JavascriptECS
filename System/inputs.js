@@ -1,5 +1,11 @@
+/* 
+Input system that changes global movement variables
+*/
+
 var xInputMov = 0;
 var yInputMov = 0;
+
+var angleMov = 0;
 
 // look for keydown on the screen
 window.addEventListener('keydown', (event) => {
@@ -23,7 +29,23 @@ window.addEventListener('keydown', (event) => {
         case 'd': 
             xInputMov = 1;
             break;
+
+        case 'e':
+            angleMov = 1;
+            break;
+
+        case 'q':
+            angleMov = -1;
+            break;
+
+        case 'escape':
+            // kill the game, using gloval interval id
+            window.clearInterval(window.IntervalId);
+
+            // alerts + console log
+            alert("KILLED GAME!");
+            console.log("KILLED GAME");
     };
 });
 
-window.addEventListener('keyup', () => {xInputMov=0;yInputMov=0;});
+window.addEventListener('keyup', () => {xInputMov=0;yInputMov=0;angleMov=0;});
