@@ -21,3 +21,5 @@ Player.add_bundles(player_bundles);
 
 // save the entity
 makeEntity(Player.id, Player);
+
+console.log(SAP());

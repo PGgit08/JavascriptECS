@@ -1,5 +1,5 @@
-// create entities object
-var entities = {};
+// create entities object as a global object
+window.entities = {};
 
 // to add entity
 const makeEntity = (id, entity_object) => {
