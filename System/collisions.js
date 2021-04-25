@@ -17,7 +17,8 @@ function AABB(box1, box2){
         return condition based on above;
     */
 
-   return false;
+    // inequality
+    return box1[0] >= box2[0] && box1[0] <= box2[1] || box1[1] <= box2[1] && box1[1] >= box2[0];
 };
 
 function getMinMax(entity){
@@ -46,16 +47,17 @@ function SAP(){
                 
                 // if activeList is full and collision for sure exists, refresh activeList 
                 else{
-                    possibleOverlaps.push(activeList);
-                    activeList = [];
+                    // also check that activeList is more than just the init entity
+                    if(activeList.length > 1){
+                        possibleOverlaps.push(activeList);
+                        activeList = [];
+                    };
                 };
             };
 
             if(activeList.length == 0){
                 activeList.push(entity);
             };
-
-
         }
     );
 
