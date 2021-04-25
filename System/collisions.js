@@ -31,7 +31,7 @@ function getMinMax(entity){
     return [minX, maxX];
 };
 
-// sweep and prune algorithm
+// sort and prune algorithm
 function SAP(){
     // algorithm lists
     var activeList = [];
