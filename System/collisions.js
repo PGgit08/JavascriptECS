@@ -31,18 +31,33 @@ function getMinMax(entity){
     return [minX, maxX];
 };
 
-// sort and prune algorithm
+// sweep and prune algorithm
 function SAP(){
+    // set the sorted entities variables
+    let sorted_entities = {};
+
+    // set sorted entities
+    Object.values(entities).forEach((entity) => {sorted_entities[entity.id] = getMinMax(entity)});
+    
+    // sort entities
+    // Object.entries(sorted_entities).sort((a, b) => a[1][0] - b[1][0]).map(el => el[1]);
+
+    // console.log(sorted_entities);
+
     // algorithm lists
     var activeList = [];
     var possibleOverlaps = [];
 
-    Object.values(entities).forEach(
-        (entity) => {
+    Object.keys(sorted_entities).forEach(
+        (entity_key) => {
+            log(entity_key);
+            // console.log(entity_key);
+            const entity_pos = sorted_entities[entity_key];
+
             if(activeList.length > 0){
-                if(AABB(getMinMax(activeList[activeList.length - 1]), getMinMax(entity))){
+                if(AABB(sorted_entities[activeList[activeList.length - 1]], entity_pos)){
                     // push entity into activeList
-                    activeList.push(entity);
+                    activeList.push(entity_key);
                 }
                 
                 // if activeList is full and collision for sure exists, refresh activeList 
@@ -56,7 +71,7 @@ function SAP(){
             };
 
             if(activeList.length == 0){
-                activeList.push(entity);
+                activeList.push(entity_key);
             };
         }
     );
