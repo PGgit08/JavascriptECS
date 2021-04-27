@@ -18,7 +18,7 @@ function AABB(box1, box2){
     */
 
     // inequality
-    return box1[0] >= box2[0] && box1[0] <= box2[1] || box1[1] <= box2[1] && box1[1] >= box2[0];
+    return box1[0] >= box2[0] && box1[0] <= box2[1] || box2[0] >= box1[0] && box2[0] <= box1[1];
     // return true;
 };
 
