@@ -19,30 +19,31 @@ function AABB(box1, box2){
 
     // inequality
     return box1[0] >= box2[0] && box1[0] <= box2[1] || box1[1] <= box2[1] && box1[1] >= box2[0];
+    // return true;
 };
 
 function getMinMax(entity){
+    // get the shapetype
     const shapeType = (entity.components.rectangleSize || entity.components.circleSize);
 
     // get minX and maxX values of entity
-    const minX = entity.components.position.x;
-    const maxX = minX + (shapeType.r || shapeType.w);
+    const minX = entity.components.position.x - (shapeType.r || shapeType.w * 0);
+    const maxX = minX + (shapeType.r * 2 || shapeType.w);
 
     return [minX, maxX];
 };
 
 // sweep and prune algorithm
 function SAP(){
-    // set the sorted entities variables
+    // set the sorted entities variables and minMax variable
+    let minMax = {};
     let sorted_entities = {};
 
-    // set sorted entities
-    Object.values(entities).forEach((entity) => {sorted_entities[entity.id] = getMinMax(entity)});
+    // set minMax of entities
+    Object.values(entities).forEach((entity) => {minMax[entity.id] = getMinMax(entity)});
     
     // sort entities
-    // Object.entries(sorted_entities).sort((a, b) => a[1][0] - b[1][0]).map(el => el[1]);
-
-    // console.log(sorted_entities);
+    Object.entries(minMax).sort((a, b) => a[1][0] - b[1][0]).map(el => {sorted_entities[el[0]] = el[1]});
 
     // algorithm lists
     var activeList = [];
@@ -50,9 +51,8 @@ function SAP(){
 
     Object.keys(sorted_entities).forEach(
         (entity_key) => {
-            log(entity_key);
-            // console.log(entity_key);
             const entity_pos = sorted_entities[entity_key];
+            // log(entity_pos);
 
             if(activeList.length > 0){
                 if(AABB(sorted_entities[activeList[activeList.length - 1]], entity_pos)){
