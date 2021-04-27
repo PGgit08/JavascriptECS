@@ -59,10 +59,13 @@ function SAP(){
                 // previous entity, add it to activeList
                 const POSSIBLE_COLLISION = AABB(sorted_entities[activeList[activeList.length - 1]], entity_pos);
 
-                log(POSSIBLE_COLLISION);
-
                 if(POSSIBLE_COLLISION){
                     activeList.push(entity_key);
+
+                    // if this is the last item
+                    if(activeList.indexOf(entity_key) == activeList.length - 1){
+                        possibleOverlaps.push(activeList);
+                    };
                 };
 
 
