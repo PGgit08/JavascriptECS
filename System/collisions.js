@@ -52,33 +52,51 @@ function SAP(){
     Object.keys(sorted_entities).forEach(
         (entity_key) => {
             const entity_pos = sorted_entities[entity_key];
-            // log(entity_pos);
 
+            // if activeList has an initial or multiple items
             if(activeList.length > 0){
-                if(AABB(sorted_entities[activeList[activeList.length - 1]], entity_pos)){
-                    // push entity into activeList
+                // if current entity possbily collides with 
+                // previous entity, add it to activeList
+                const POSSIBLE_COLLISION = AABB(sorted_entities[activeList[activeList.length - 1]], entity_pos);
+
+                log(POSSIBLE_COLLISION);
+
+                if(POSSIBLE_COLLISION){
                     activeList.push(entity_key);
-                }
-                
-                // if activeList is full and collision for sure exists, refresh activeList 
-                else{
-                    // also check that activeList is more than just the init entity
+                };
+
+
+                if(!POSSIBLE_COLLISION){
+                    // if activeList has more than 1 item,
+                    // and current collision is false
+                    // save this as a definetly possibly occuring
+                    // collision
                     if(activeList.length > 1){
                         possibleOverlaps.push(activeList);
+
+                        // reset activeList
                         activeList = [];
                     };
+
+                    // if current entity does not possbily collide with
+                    // previous entity, pop previous entity and replace
+                    // it with current entity
+                    if(activeList.length == 1){
+                        activeList[0] = entity_key;
+                    };
                 };
+
             };
 
-            if(activeList.length == 0){
+            // if there is nothing inside activeList
+            // then put initial entity
+            if(activeList == 0){
                 activeList.push(entity_key);
             };
         }
     );
 
-    // return the possble overlapping items
     return possibleOverlaps;
-
 };
 
 function narrow_phase(e1, e2){
