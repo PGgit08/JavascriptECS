@@ -5,6 +5,7 @@ function MainLoop(){
     ClearBackground();
 
     for(var entityId in entities){
+        SAP();
         // console.log(xInputMov, yInputMov);
         // get current entity
         var curEntity = entities[entityId];
@@ -69,8 +70,8 @@ function MainLoop(){
                 const {w, h} = components.rectangleSize;
               
                 if(angleMov && rotation){
-                    x = w / -2;
-                    y = h / -2;
+                    x = w/-2;
+                    y = h/-2;
                 };
 
                 rectRender({

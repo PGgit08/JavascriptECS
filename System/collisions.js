@@ -51,6 +51,7 @@ function SAP(){
 
     Object.keys(sorted_entities).forEach(
         (entity_key) => {
+            // entity maxMinX
             const entity_pos = sorted_entities[entity_key];
 
             // if activeList has an initial or multiple items
@@ -60,6 +61,7 @@ function SAP(){
                 const POSSIBLE_COLLISION = AABB(sorted_entities[activeList[activeList.length - 1]], entity_pos);
 
                 if(POSSIBLE_COLLISION){
+                    // possibly occuring collision found
                     activeList.push(entity_key);
 
                     // if this is the last item
@@ -75,7 +77,8 @@ function SAP(){
                     // save this as a definetly possibly occuring
                     // collision
                     if(activeList.length > 1){
-                        possibleOverlaps.push(activeList);
+                        /* HERE CHECK FOR REAL COLLISION BETWEEN ITEMS IN ACTIVELIST*/
+                        // nothing here yet
 
                         // reset activeList
                         activeList = [];
@@ -99,9 +102,56 @@ function SAP(){
         }
     );
 
-    return possibleOverlaps;
+    // return possibleOverlaps;
 };
 
-function narrow_phase(e1, e2){
-    // not sure what to put here yet
+// different functions for detections
+const DETECTIONS = {
+    collided: false,
+    circles: (cDim1, cDim2, cPos1, cPos2) => {
+
+    },
+    rectangles: (rDim1, rDim2, rPos1, rPos2) => {
+
+    },
+    rect_circle: (Dim1, Dim2, Pos1, Pos2) => {
+
+    }
+};
+
+
+/* 
+Peter:
+Really simple narrow phase collision detection.
+Doesn't work with rotated rectangles or concave shapes, 
+because thats required hard math which I don't understand. 
+*/
+function simple_detect(e1, e2){
+    // this can do
+    // circle -> circle
+    // rectangle -> circle
+    // rectangle -> rectangle
+
+    // get shapeTypes like done previously with an OR operation
+    const e1_comp = e1.components;
+    const e2_comp = e2.components;
+
+    // get coordinates
+    const e1_pos = e1.components.position;
+    const e2_pos = e2.components.position;
+
+    if(e1_comp.rectangleSize && e2_comp.rectangleSize){
+        // shapes are both rectangles
+        DETECTIONS.rectangles(e1_comp.rectangleSize, e2_comp.rectangleSize, e1_pos, e2_pos);
+    };
+
+    if(e1_comp.circleSize && e2_comp.circleSize){
+        // shapes are both circles
+        DETECTIONS.circles(e1_comp.circleSize, e2_comp.circleSize, e1_pos, e2_pos);
+    }
+
+    else{
+        // shapes are different
+        DETECTIONS.rect_circle(e1_comp, e2_comp, e1_pos, e2_pos);
+    };
 };
